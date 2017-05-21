@@ -19,8 +19,10 @@
 
 
   Article.loadAll = rows => {
-    rows.sort((a,b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)));
-    Article.all = rows.map(ele => new Article(ele));
+    // rows.sort((a,b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)));
+    // Article.all = rows.map(ele => new Article(ele));
+    Article.all = rows.sort((a,b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)))
+    .map(function(ele) { return new Article(ele) });
   };
 
   Article.fetchAll = callback => {
